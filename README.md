@@ -3,7 +3,7 @@
 ### How to Install
 
 ```
-$ npm install isomorphic-style-loader --save-dev
+$ npm install ro-style-loader --save-dev
 ```
 
 ### Getting Started
@@ -17,7 +17,7 @@ $ npm install isomorphic-style-loader --save-dev
       {
         test: /\.scss$/,
         loaders: [
-          'isomorphic-style-loader',
+          'ro-style-loader',
           'css-loader?modules&localIdentName=[name]_[local]_[hash:base64:3]',
           'postcss-loader'
         ]
@@ -41,7 +41,7 @@ $ npm install isomorphic-style-loader --save-dev
 // MyComponent.js
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import withStyles from 'ro-style-loader/lib/withStyles';
 import s from './MyComponent.scss';
 
 function MyComponent(props, context) {
