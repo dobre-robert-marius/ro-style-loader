@@ -8,13 +8,13 @@ module.exports = (grunt) => {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     shell: {
-      pre_commit_tests: {
-        command: 'testem ci',
+      build_lib: {
+        command: 'npm run build',
       },
     },
     bump: {
       options: {
-        files: ['package.json', 'bower.json'],
+        files: ['package.json'],
         updateConfigs: ['pkg'],
         commit: true,
         commitMessage: 'Release v%VERSION%',
@@ -42,9 +42,9 @@ module.exports = (grunt) => {
 
   });
 
-  grunt.registerTask('deploy:patch', ['bump-only:patch', 'build:prod', 'shell:pre_commit_tests', 'bump-commit', 'release:patch']);
-  grunt.registerTask('deploy:minor', ['bump-only:minor', 'build:prod', 'shell:pre_commit_tests', 'bump-commit', 'release:minor']);
-  grunt.registerTask('deploy:major', ['bump-only:major', 'build:prod', 'shell:pre_commit_tests', 'bump-commit', 'release:major']);
+  grunt.registerTask('deploy:patch', ['bump-only:patch', 'shell:build_lib', 'bump-commit', 'release:patch']);
+  grunt.registerTask('deploy:minor', ['bump-only:minor', 'shell:build_lib', 'bump-commit', 'release:minor']);
+  grunt.registerTask('deploy:major', ['bump-only:major', 'shell:build_lib', 'bump-commit', 'release:major']);
   grunt.registerTask('deploy', ['deploy:patch']);
 
   grunt.registerTask('default', ['deploy']);
