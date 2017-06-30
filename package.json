@@ -1,0 +1,87 @@
+{
+  "name": "ro-style-loader",
+  "version": "1.0.0",
+  "description": "CSS style loader for Webpack",
+  "keywords": [
+    "webpack",
+    "webpack-loader",
+    "webpack loader",
+    "loader",
+    "css",
+    "scss",
+    "style",
+    "styles",
+    "style-loader",
+    "style loader",
+    "react",
+    "reactjs",
+    "isomorphic",
+    "universal"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "babel": {
+    "presets": [
+      "react",
+      "latest"
+    ],
+    "plugins": [
+      "transform-runtime"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "env": {
+      "browser": true
+    },
+    "rules": {
+      "import/no-extraneous-dependencies": "off",
+      "no-continue": "off",
+      "no-plusplus": "off",
+      "react/jsx-filename-extension": "off"
+    }
+  },
+  "dependencies": {
+    "babel-runtime": "^6.23.0",
+    "hoist-non-react-statics": "^1.2.0",
+    "loader-utils": "^1.1.0",
+    "prop-types": "^15.5.8"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "chai": "^3.5.0",
+    "coveralls": "^2.13.0",
+    "create-react-class": "^15.5.2",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
+    "istanbul": "^1.1.0-alpha.1",
+    "jsdom": "^9.12.0",
+    "mocha": "^3.2.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "rimraf": "^2.6.1",
+    "sinon": "^2.1.0"
+  },
+  "scripts": {
+    "lint": "eslint src test",
+    "test": "mocha test --compilers js:babel-register",
+    "test:watch": "mocha --compilers js:babel-register --reporter min --watch",
+    "test:cover": "babel-node ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "build": "rimraf lib && babel src --out-dir lib",
+    "prepublish": "rimraf lib && babel src --out-dir lib"
+  }
+}
